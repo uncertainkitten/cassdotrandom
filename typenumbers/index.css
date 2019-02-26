@@ -1,0 +1,32 @@
+.container{
+  width: 800px;
+  height: 600px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  background-color: #112233;
+}
+
+.number-box{
+  grid-row: 2 / 3;
+  grid-column: 2 / 3;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr 2fr 1fr;
+}
+
+.numbers{
+  grid-row: 2 / 3;
+  grid-column: 2 / 3;
+  font-size: 24pt;
+  font-family: 'Khand', sans-serif;
+  color: #99FF33;
+  border: 3px double #3344AA;
+  text-shadow: 0 0 3px #AA5533;
+  text-align: center;
+  background-color: #445566;
+}
+
+.numbers:focus{
+  outline: none;
+}
