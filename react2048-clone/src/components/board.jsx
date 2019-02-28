@@ -7,6 +7,56 @@ class Board extends React.Component{
     this.state = {
       board: [[false, false], [true, false]]
     }
+    this.moveBox = this.moveBox.bind(this);
+  }
+
+  moveBox(event){
+    let board = this.state.board.slice(0);
+    switch(event.key){
+      case "ArrowRight":
+        this.state.board.forEach((row, idx) => {
+          row.forEach((space, idxs) => {
+            if(space && idxs < row.length - 1){
+              board[idx][idxs] = false;
+              board[idx][idxs + 1] = true;
+            }
+          });
+        });
+      break;
+      case "ArrowLeft":
+        this.state.board.forEach((row, idx) => {
+          row.forEach((space, idxs) => {
+            if(space && idxs > 0){
+              board[idx][idxs] = false;
+              board[idx][idxs - 1] = true;
+            }
+          });
+        });
+      break;
+      case "ArrowUp":
+        this.state.board.forEach((row, idx) => {
+          row.forEach((space, idxs) => {
+            if(space && idx > 0){
+              board[idx][idxs] = false;
+              board[idx - 1][idxs] = true;
+            }
+          });
+        });
+      break;
+      case "ArrowDown":
+        this.state.board.forEach((row, idx) => {
+          row.forEach((space, idxs) => {
+            if(space && idx < board.length - 1){
+              board[idx][idxs] = false;
+              board[idx + 1][idxs] = true;
+            }
+          });
+        });
+      break;
+      default:
+      break;
+    }
+    this.setState({board});
   }
 
   render(){
@@ -21,7 +71,7 @@ class Board extends React.Component{
       })
     })
     return(
-      <div className="board-container">
+      <div className="board-container" onKeyDown={this.moveBox} tabIndex="0">
         {boardRender}
       </div>
     );
