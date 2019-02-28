@@ -17,7 +17,7 @@ export default App;
 // All right!  So 2048, how we doing this?
 // 1. Create a 2 x 2 Board that has 1 Box (HOORAY)
 // 2. Create logic to move dat Box (HOORAY)
-// 3. Create collision logic on 2 x 2
+// 3. Create collision logic on 2 x 2 (HOORAY)
 // 3a. Smoosh logic - two boxes become one
 // 3b. Collide logic - two boxes rest next to each other
 // 4. Create logic to add Box each move

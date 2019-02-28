@@ -5,7 +5,7 @@ class Board extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      board: [[false, false], [true, false]]
+      board: [[false, true], [true, false]]
     }
     this.moveBox = this.moveBox.bind(this);
   }
@@ -16,7 +16,7 @@ class Board extends React.Component{
       case "ArrowRight":
         this.state.board.forEach((row, idx) => {
           row.forEach((space, idxs) => {
-            if(space && idxs < row.length - 1){
+            if(space && idxs < row.length - 1 && !board[idx][idxs + 1]){
               board[idx][idxs] = false;
               board[idx][idxs + 1] = true;
             }
@@ -26,7 +26,7 @@ class Board extends React.Component{
       case "ArrowLeft":
         this.state.board.forEach((row, idx) => {
           row.forEach((space, idxs) => {
-            if(space && idxs > 0){
+            if(space && idxs > 0 && !board[idx][idxs - 1]){
               board[idx][idxs] = false;
               board[idx][idxs - 1] = true;
             }
@@ -36,7 +36,7 @@ class Board extends React.Component{
       case "ArrowUp":
         this.state.board.forEach((row, idx) => {
           row.forEach((space, idxs) => {
-            if(space && idx > 0){
+            if(space && idx > 0 && !board[idx - 1][idxs]){
               board[idx][idxs] = false;
               board[idx - 1][idxs] = true;
             }
@@ -46,7 +46,7 @@ class Board extends React.Component{
       case "ArrowDown":
         this.state.board.forEach((row, idx) => {
           row.forEach((space, idxs) => {
-            if(space && idx < board.length - 1){
+            if(space && idx < board.length - 1 && !board[idx + 1][idxs]){
               board[idx][idxs] = false;
               board[idx + 1][idxs] = true;
             }
