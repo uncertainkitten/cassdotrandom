@@ -5,9 +5,16 @@ class Board extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      board: [[false, true], [true, false]]
+      board: [[false, 2], [2, false]]
     }
     this.moveBox = this.moveBox.bind(this);
+  }
+
+  shouldSmoosh(value1, value2){
+    if(value1 === value2){
+      return true
+    }
+    return false
   }
 
   moveBox(event){
@@ -66,7 +73,7 @@ class Board extends React.Component{
         if (!space){
           boardRender[idxr][idxs] = <div className="empty-space">BEEP</div>
         } else {
-          boardRender[idxr][idxs] = <Box value="2" />
+          boardRender[idxr][idxs] = <Box value={space} />
         }
       })
     })
